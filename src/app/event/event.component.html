@@ -1,0 +1,56 @@
+<div class="container">
+    <h1>Events App</h1>
+  
+    <form (ngSubmit)="addEvents(f)" #f="ngForm">
+      <div class="form-group">
+        <label for="title">Title: </label>
+        <input type="text" class="form-control" id="title" name="title" ngModel required #t="ngModel" >
+        <div *ngIf="t.invalid && t.touched" class="alert alert-danger" role="alert">
+          Le champ title est obligatoire!!!
+        </div>
+      </div>
+      <div class="form-group">
+        <label for="organisateur">Organisateur: </label>
+        <input type="text" class="form-control" id="organisateur" name="organisateur" ngModel required #org="ngModel">
+        <div *ngIf="org.invalid && org.touched" class="alert alert-danger" role="alert">
+          Le champ organisateur est obligatoire!!!
+        </div>
+      </div>
+      
+        <div class="form-group">
+          <label for="description">Description : </label>
+          <input type="text" class="form-control" id="description" name="description" ngModel required #d="ngModel">
+          <div *ngIf="d.invalid && d.touched" class="alert alert-danger" role="alert">
+            Le champ description est obligatoire!!!
+          </div>
+        </div>
+        
+          <div class="form-group">
+            <label for="dateDEBUT">Date de debut:</label>
+            <input type="date" class="form-control" id="dateDEBUT" name="dateDEBUT" ngModel required #debut="ngModel">
+            <span *ngIf="(debut.invalid && debut.touched )" class="validation">
+               Start Date is required
+            </span>
+            <span  class="validation">
+             le champ date debut doit etre superieur a date fin
+           </span>
+          </div>
+          <div class="form-group">
+            <label for="dateFIN">Date de fin: </label>
+            <input type="date" class="form-control" id="dateFIN" name="dateFIN" ngModel required #fin="ngModel">
+            <span *ngIf="(fin.invalid && fin.touched)" class="validation">
+              End Date is required
+           </span>
+           <span class="validation">
+            le champ date fin doit etre inferieur a date debut
+          </span>
+          </div>
+            <div>
+        <input [disabled]="f.invalid" type="submit" value="Add Event" class="btn btn-primary"/>
+      </div>
+   
+  
+  </form>
+  
+    
+  </div>
